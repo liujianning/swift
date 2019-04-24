@@ -29,13 +29,8 @@ class testTablevierController: baseViewController , UITableViewDelegate, UITable
             let respose = result
             let list = respose["list"] as? NSArray
             self.allDataArr =  testModel.modelChange(arr: list as? Array<Any> ?? [] )
-           
-//            let code:String  = respose["code"] as? String ?? "0"
-//            if code == "1"{
-//                UIAlertController.showAlert(message: "code=1", in: self)
-//            } else{
-//                UIAlertController.showAlert(message: "code=0, 请求失败", in: self)
-//            }
+        
+            
             self.mainTableview.reloadData()
             
            
@@ -52,6 +47,7 @@ class testTablevierController: baseViewController , UITableViewDelegate, UITable
         self.view.addSubview(mainTableview)
         mainTableview.register(testTableviewCell.classForCoder(), forCellReuseIdentifier:"identifier")
         mainTableview.tableFooterView = UIView.init()
+        
     }
 
     //MARK: === UITableViewDelegate ====

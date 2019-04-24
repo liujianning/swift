@@ -6,11 +6,15 @@ PODS:
     - Alamofire (~> 4.1)
     - Result (~> 4.0)
   - Result (4.1.0)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Moya (~> 12.0)
+  - SQLite.swift
   - SwiftyJSON (~> 3.0)
 
 SPEC REPOS:
@@ -18,14 +22,16 @@ SPEC REPOS:
     - Alamofire
     - Moya
     - Result
+    - SQLite.swift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 806131da454c319faba5b34f7013e161381b7f91
+PODFILE CHECKSUM: 0da203dbc08177d442e222dc3f188102e96d3aa4
 
 COCOAPODS: 1.6.1

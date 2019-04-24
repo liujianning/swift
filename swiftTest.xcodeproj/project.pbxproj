@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		547B933B356F8E47B8AEDE97 /* Pods_swiftTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EEE8F970E1693AD735AFACF /* Pods_swiftTest.framework */; };
+		C4031A89226DB51E002C7A48 /* LocalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4031A88226DB51E002C7A48 /* LocalDataController.swift */; };
 		C480241D224C5B5900AD12D5 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480241C224C5B5900AD12D5 /* UIButton+Extension.swift */; };
 		C480241F224C6FEE00AD12D5 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480241E224C6FEE00AD12D5 /* UILable+Extension.swift */; };
 		C4802421224DCCEB00AD12D5 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4802420224DCCEA00AD12D5 /* UITableView+Extension.swift */; };
@@ -55,6 +56,10 @@
 /* Begin PBXFileReference section */
 		85F5629878ADDFD95F4D698F /* Pods-swiftTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftTest.debug.xcconfig"; path = "Target Support Files/Pods-swiftTest/Pods-swiftTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9EEE8F970E1693AD735AFACF /* Pods_swiftTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4031A88226DB51E002C7A48 /* LocalDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataController.swift; sourceTree = "<group>"; };
+		C45C2F5F226EB0160036099A /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C45C2F61226EB0160036099A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		C45C2F62226EB0160036099A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C480241C224C5B5900AD12D5 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C480241E224C6FEE00AD12D5 /* UILable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		C4802420224DCCEA00AD12D5 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -118,6 +123,9 @@
 		38A07837C9485FB29CD8A2C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C45C2F61226EB0160036099A /* libsqlite3.0.tbd */,
+				C45C2F62226EB0160036099A /* libsqlite3.tbd */,
+				C45C2F5F226EB0160036099A /* SQLite.framework */,
 				9EEE8F970E1693AD735AFACF /* Pods_swiftTest.framework */,
 			);
 			name = Frameworks;
@@ -238,6 +246,7 @@
 				F783879522375F93003517F5 /* ViewController.swift */,
 				F78387C42237612D003517F5 /* rootController.swift */,
 				F7ADEDA822447D8F009E3076 /* testTablevierController.swift */,
+				C4031A88226DB51E002C7A48 /* LocalDataController.swift */,
 			);
 			path = ControllerFile;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -411,6 +421,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +461,7 @@
 				C4BA5D18224C54BA002AFAA3 /* UIImageView+Extension.swift in Sources */,
 				F783879622375F93003517F5 /* ViewController.swift in Sources */,
 				C4BA5D14224C5406002AFAA3 /* UIView+Extension.swift in Sources */,
+				C4031A89226DB51E002C7A48 /* LocalDataController.swift in Sources */,
 				F7ADEDA922447D8F009E3076 /* testTablevierController.swift in Sources */,
 				C480241F224C6FEE00AD12D5 /* UILable+Extension.swift in Sources */,
 				C480241D224C5B5900AD12D5 /* UIButton+Extension.swift in Sources */,

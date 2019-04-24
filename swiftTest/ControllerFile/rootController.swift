@@ -14,34 +14,41 @@ class rootController: baseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.purple
         self.addTopTitle(title: "首页")
+        self.creatMyListView()
+    }
+    
+    func creatMyListView () {
+//        let arr = ["tableview", "2", "3"] as String
+        let arr : [String]=["tableview", "swift数据库_sqlite.swift", "123"]
 
-        for i in 0...3 {
-            let button  = UIButton.init(frame:CGRect(x: 30, y: 100+25*i, width: 100, height: 20) , bColor: UIColor.red, text: "asdada", textColor: UIColor.black, textFont: 12, tag: 100+i)
+        for i in 0...arr.count-1 {
+            let button  = UIButton.init(frame:CGRect(x: 30, y: 100+50*i, width: Int(KScreenW-60), height: 40) , bColor: UIColor.red, text: arr[i], textColor: UIColor.black, textFont: 12, tag: 100+i)
             self.view.addSubview(button)
             button.addTarget(self, action: #selector(buttonAction(button:)), for: .touchUpInside)
         }
     }
     
     @objc func buttonAction(button:UIButton){
-        
-        if button.tag == 100 {
+        switch button.tag {
+        case 100:
             let testTableview = testTablevierController()
             testTableview.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(testTableview, animated: true)
+            break
+            
+        case 101:
+            let testTableview = LocalDataController()
+            testTableview.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(testTableview, animated: true)
+            break
+            
+        default:
+            //
+            break
         }
         
     }
     
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
