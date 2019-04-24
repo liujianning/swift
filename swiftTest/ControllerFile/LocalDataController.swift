@@ -11,7 +11,9 @@ import UIKit
 import SQLite
 
 class LocalDataController: baseViewController {
-//     private var mTable: Table!
+
+    private var DBNAME = "db3"
+     private var TableKeyDict = ["users":["a", "j"], "users15":["name", "status", "age"]] //表的键值
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class LocalDataController: baseViewController {
         case 100:
             //增
             //在库名为 dd2 的里面的 users15 表增加一条数据, 如果没有这个表,则会自动建立一张表后再增加一条数据
-            self.addData(dbName:"db3", tableName: "users", model: "hh")
+            self.addData(dbName:DBNAME, tableName: "users15", model: "hh")
             break
         case 101:
             //删
@@ -49,11 +51,11 @@ class LocalDataController: baseViewController {
             break
         case 104:
             //加表字段
-            self.addNewField(dbName:"db2", tableName: "users15", newFieldArr: ["a", "b", "c"])
+            self.addNewField(dbName:DBNAME, tableName: "users15", newFieldArr: ["a", "b", "c"])
             break
         case 105:
             //判断表是否存在
-            if self.isTable(dbName: "db2", tableName: "users10") == true {
+            if self.isTable(dbName: DBNAME, tableName: "users15") == true {
                 print("存在")
             }else{
                 print("不存在")
@@ -99,10 +101,9 @@ class LocalDataController: baseViewController {
         //temporary:是否是临时表
         //ifNotExists:是否不存在的情况才会创建，记得设置为true
         //withoutRowid:是否自动创建自增的rowid
-        let keyArray = ["a", "j"] //该行需要针对具体业务调整
         try! targetDB.run(targetTable.create(temporary: false, ifNotExists: true, withoutRowid: false, block: { (t) in
-            for i in 0...keyArray.count-1 {
-                let sqlite_key = Expression<String?>(keyArray[i])
+            for i in 0...TableKeyDict[tableName]!.count-1 {
+                let sqlite_key = Expression<String?>(TableKeyDict[tableName]![i])
                 t.column(sqlite_key)
             }
         })
@@ -117,9 +118,9 @@ class LocalDataController: baseViewController {
         do {
             let targetDB = self.creatMyDB(dbName: dbName)
             let targetTable = Table(tableName)
-            let email = Expression<String>("email")
-            let name = Expression<String>("email")
-            let tableCount = try targetDB.scalar(targetTable.filter(email == "" && name == "").count)
+            let email = Expression<String>("email")//该行需要针对具体业务调整
+            let name = Expression<String>("email")//该行需要针对具体业务调整
+            let tableCount = try targetDB.scalar(targetTable.filter(email == "" && name == "").count)//该行需要针对具体业务调整
             return tableCount == 1
         } catch {
             return false
@@ -132,7 +133,8 @@ class LocalDataController: baseViewController {
     func addData(dbName:String, tableName: String,  model:String) {
         let targetDB =  self.creatMyDB(dbName: dbName)
         let targetTable = self.creatMyTable(dbName:dbName, tableName: tableName)
-        let insert = targetTable.insert(Expression<String>("a") <- model, Expression<String>("j") <- model)//该行需要针对具体业务调整
+        //键值可以不写全,但必须写对!
+        let insert = targetTable.insert(Expression<String>("name") <- model, Expression<String>("status") <- model)//该行需要针对具体业务调整
         if let rowId = try? targetDB.run(insert) {
             print("插入成功：\(rowId )")
         } else {
