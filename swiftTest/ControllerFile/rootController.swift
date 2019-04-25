@@ -19,7 +19,7 @@ class rootController: baseViewController {
     
     func creatMyListView () {
 //        let arr = ["tableview", "2", "3"] as String
-        let arr : [String]=["tableview", "swift数据库_sqlite.swift", "123"]
+        let arr : [String]=["tableview", "数据库_sqlite.swift", "数据库_realm"]
 
         for i in 0...arr.count-1 {
             let button  = UIButton.init(frame:CGRect(x: 30, y: 100+50*i, width: Int(KScreenW-60), height: 40) , bColor: UIColor.white, text: arr[i], textColor: UIColor.black, textFont: 12, tag: 100+i)
