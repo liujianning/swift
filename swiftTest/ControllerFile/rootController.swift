@@ -12,7 +12,7 @@ class rootController: baseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.purple
+        self.view.backgroundColor = UIColor.lightGray
         self.addTopTitle(title: "首页")
         self.creatMyListView()
     }
@@ -22,7 +22,7 @@ class rootController: baseViewController {
         let arr : [String]=["tableview", "swift数据库_sqlite.swift", "123"]
 
         for i in 0...arr.count-1 {
-            let button  = UIButton.init(frame:CGRect(x: 30, y: 100+50*i, width: Int(KScreenW-60), height: 40) , bColor: UIColor.red, text: arr[i], textColor: UIColor.black, textFont: 12, tag: 100+i)
+            let button  = UIButton.init(frame:CGRect(x: 30, y: 100+50*i, width: Int(KScreenW-60), height: 40) , bColor: UIColor.white, text: arr[i], textColor: UIColor.black, textFont: 12, tag: 100+i)
             self.view.addSubview(button)
             button.addTarget(self, action: #selector(buttonAction(button:)), for: .touchUpInside)
         }
