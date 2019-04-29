@@ -41,6 +41,11 @@ class rootController: baseViewController {
             testTableview.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(testTableview, animated: true)
             break
+        case 102:
+            let testTableview = RealmController()
+            testTableview.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(testTableview, animated: true)
+            break
             
         default:
             //

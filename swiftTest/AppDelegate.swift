@@ -11,6 +11,8 @@
 import UIKit
 import CoreData
 
+import RealmSwift
+
 @UIApplicationMain
 
 
@@ -23,9 +25,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabbar = myTabBarController()
         self.window?.rootViewController = tabbar
         self.window?.makeKeyAndVisible()
+        self.configRealm()
         return true
     }
 
+    /// 配置数据库
+    func configRealm() {
+        /// 如果要存储的数据模型属性发生变化,需要配置当前版本号比之前大
+        let dbVersion : UInt64 = 4
+        let docPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as String
+        let dbPath = docPath.appending("/defaultDB2.realm")
+        let config = Realm.Configuration(fileURL: URL.init(string: dbPath), inMemoryIdentifier: nil, syncConfiguration: nil, encryptionKey: nil, readOnly: false, schemaVersion: dbVersion, migrationBlock: { (migration, oldSchemaVersion) in
+            
+        }, deleteRealmIfMigrationNeeded: false, shouldCompactOnLaunch: nil, objectTypes: nil)
+        Realm.Configuration.defaultConfiguration = config
+        Realm.asyncOpen { (realm, error) in
+            if let _ = realm {
+                print("Realm 服务器配置成功,库地址-> \(dbPath)")
+            }else if let error = error {
+                print("Realm 数据库配置失败：\(error.localizedDescription)")
+            }
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -47,6 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        
+        
         self.saveContext()
     }
 

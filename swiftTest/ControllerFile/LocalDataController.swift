@@ -7,12 +7,12 @@
 //
 
 /**
- * 1.SQLite.swift开源项目已有近六千star,是swift语言中关于数据库操作star最多的框架 https://github.com/stephencelis/SQLite.swift
+ * 1.SQLite.swift开源项目已有近六千star,相对稳定,颇受好评 https://github.com/stephencelis/SQLite.swift
  * 2.SQLite.swift是对SQLite的强封装,纯swift接口，无需SQL语句。
- * 3.采用链式编程的写法，让数据库的管理变得优雅，可读性极强。
+ * 3.采用链式编程的写法，管理优雅,易维护，可读性极强。
  * 4.本类列举了几项实用的使用方法,部分函数需要针对具体的业务做修改.
- * 5.在对数据库进行操作是要明确 哪个库里的哪张表.(一般会创建一个库多张表)
- * 6.配合Datum-Lite(App Store免费),查看数据.
+ * 5.在对数据库进行操作时要明确 哪个库里的哪张表.(一般会创建一个库多张表)
+ * 6.配合Datum-Lite(App Store免费),查看数据库数据.
  */
 
 import UIKit
@@ -27,7 +27,7 @@ class LocalDataController: baseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.addTopTitle(title: "数据本地化-sqlite.swift")
+        self.addTopTitle(title: "sqlite.swift的使用")
         self.addBackButton()
         self.crestTb()
     }
@@ -206,9 +206,5 @@ class LocalDataController: baseViewController {
         }
 
     }
-    
-    
-    
-    
-    
+
 }
