@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    var tooken = NotificationToken()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let tabbar = myTabBarController()
@@ -45,8 +46,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }else if let error = error {
                 print("Realm 数据库配置失败：\(error.localizedDescription)")
             }
+
+//            self.tooken = realm!.observe { notification, realm in
+//            }
+//
+//            notificationToken = Realm.addNotificationBlock({ (changes: RealmCollectionChange) in
+//                switch changes {
+//                case .initial:
+//                    self.tableView.reloadData()
+//                    break
+//                case .update(_, deletions: _, insertions: _, modifications: _):
+//                    self.getTodoList()
+//                    break
+//                case .error(let err):
+//                    fatalError("\(err)")
+//                    break
+//                }
+//            })
+            
+            
         }
     }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

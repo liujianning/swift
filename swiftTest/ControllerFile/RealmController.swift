@@ -6,14 +6,17 @@
 //  Copyright © 2019 ljn. All rights reserved.
 //
 
+
+
 /**
  *0.Realm于2014 年7月发布，是一个跨平台的移动数据库引擎，专门为移动应用的数据持久化而生。其目的是要取代Core Data和SQLite
- *1.realm 目前是性能能最好的移动端数据库框架.
+ *1.realm 目前是性能能最好的移动端数据库框架. https://realm.io/blog/introducing-realm/#fast
  *2.realm 自己的数据库存储引擎，可以高效且快速地完成数据库的构建操作.
  *3.支持iOS、Android和Mac三种平台,支持Objective-C、Swift和Java三种语言.
  *4.Realm相比使用CoreData和原生的SQLite来说速度更快更加高效，而且代码量更少.
  *5.Realm的彻底免费的,即使用于商业软件.
  *6.配合Realm Browser(App Store免费)使用,方便高效的查看调试数据.
+ *7.中文文档 https://realm.io/cn/docs/swift/latest/d
  */
 import UIKit
 
@@ -115,7 +118,7 @@ class RealmController: baseViewController {
     func insertMoreStudents() {
         var stus = [Student]()
         
-        for i in 100...144 {
+        for i in 100...200 {
             let stu = Student()
             stu.name = "极客学伟_\(i)"
             stu.weight = 151;
@@ -126,8 +129,12 @@ class RealmController: baseViewController {
             dateFormatter.dateFormat = "YYYY-MM-dd"
             stu.birthday = dateFormatter.date(from: birthdayStr)! as NSDate
             stus.append(stu)
+            print(" ===========------\(Int64(i))")
         }
+        print(" 开始插入------\(Date.init().getTimestamp)")
         realmModel.insertMoreStudents(by: stus)
+        
+        
     }
     
     //MARK: ======查询

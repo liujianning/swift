@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 class Book: Object {
     @objc dynamic var name = ""
     @objc dynamic var author = ""
@@ -27,7 +28,7 @@ class Student: Object {
     @objc dynamic var birthday : NSDate? = nil
     @objc dynamic var photo : NSData?  = nil
     @objc dynamic var sex = ""
-
+    
     //重写 Object.primaryKey() 可以设置模型的主键。
     //声明主键之后，对象将被允许查询，更新速度更加高效，并且要求每个对象保持唯一性,不可重复。
     //一旦带有主键的对象被添加到 Realm 之后，该对象的主键将不可修改。
@@ -52,18 +53,17 @@ class Student: Object {
 
 
 class realmModel: NSObject {
-
+    
     private class func getDB() -> Realm {
         let docPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as String
         let dbPath = docPath.appending("/defaultDB5.realm")
         /// 传入路径会自动创建数据库
+//        do {
+//        } catch let error as NSError {
+//        }
         let defaultRealm = try! Realm(fileURL: URL.init(string: dbPath)!)
         return defaultRealm
     }
-}
-
-
-extension realmModel {
     
     // 增
     public class func insertStudent(by student : Student) -> Void {
@@ -72,12 +72,13 @@ extension realmModel {
             defaultRealm.add(student)
         }
     }
-
+    
     // 批量增
     public class func insertMoreStudents(by students : [Student]) -> Void {
         let defaultRealm = self.getDB()
         try! defaultRealm.write {
             defaultRealm.add(students)
+            print(" 插入完毕------\(Date.init().getTimestamp)")
         }
     }
     
@@ -92,7 +93,7 @@ extension realmModel {
         let defaultRealm = self.getDB()
         return defaultRealm.object(ofType: Student.self, forPrimaryKey: primaryKey)
     }
-
+    
     //根据指定查询
     public class func queryDataWithCondition(_ condition: String) -> Results<Student> {
         let defaultRealm = self.getDB()
@@ -100,7 +101,7 @@ extension realmModel {
         let results = defaultRealm.objects(Student.self)
         return  results.filter(predicate)
     }
-
+    
     //升序/降序 排列(将符合结果的数据,根据主键ID(或其他值)进行升序/降序排列)
     public class func getStudentByUp(_ term: String, isUp:Bool) -> Results<Student> {
         if term.count > 0 {
@@ -132,7 +133,7 @@ extension realmModel {
         }
     }
     
-    // 全列更新(键值更新) 
+    // 全列更新(键值更新)
     public class func updateDataWithWholeColumn(age : Int, name:String) {
         let defaultRealm = self.getDB()
         try! defaultRealm.write {
@@ -157,7 +158,7 @@ extension realmModel {
             }
         }
     }
-   
+    
     //删除单个
     public class func deleteStudent(student : Student) {
         let defaultRealm = self.getDB()
@@ -171,7 +172,7 @@ extension realmModel {
         let defaultRealm = self.getDB()
         try! defaultRealm.write {
             defaultRealm.delete(students)//删除defaultRealm库里面指定表的所有数据
-//            defaultRealm.deleteAll()//删除defaultRealm库里面所有表的所有数据
+            //            defaultRealm.deleteAll()//删除defaultRealm库里面所有表的所有数据
         }
     }
     
@@ -189,4 +190,9 @@ extension realmModel {
         }
     }
 
+}
+
+
+extension realmModel {
+    
 }
